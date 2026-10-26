@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#34694e">
+<title>翻翻花园 · 记忆配对</title>
+<style>
+:root{--green:#34694e;--ink:#243d32;--muted:#819087;--paper:#faf9f3;--line:#e3e7dc}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #d4a652;outline-offset:4px}header{height:90px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:auto;padding:0 40px}.brand{font-size:22px;font-weight:750;letter-spacing:1px}.brand span{display:inline-grid;place-items:center;background:var(--green);color:white;width:38px;height:38px;border-radius:13px;margin-right:12px}.quiet{background:none;border:1px solid var(--line);border-radius:30px;padding:10px 18px;color:var(--green)}main{max-width:1120px;margin:40px auto;padding:0 28px}.intro{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}.eyebrow{font-size:11px;letter-spacing:3px;color:var(--green);font-weight:700}h1{font-size:36px;margin:10px 0}p{line-height:1.7}.intro p{color:var(--muted);margin:0;font-size:14px}.best{font-size:12px;color:var(--muted);text-align:right}.best strong{display:block;font-size:24px;color:var(--green);margin-top:6px}.layout{display:grid;grid-template-columns:260px 1fr;gap:28px}aside{display:flex;flex-direction:column;gap:18px}.box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}.label{font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:16px}.modes{display:grid;gap:10px}.mode{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:14px;text-align:left;color:var(--ink)}.mode.active{background:#edf4ec;border-color:#72977b}.mode b{display:block;font-size:14px}.mode small{display:block;margin-top:6px;color:var(--muted);font-size:11px}.levels{display:flex;justify-content:space-between;position:relative}.level{color:#a6aea4;text-align:center;font-size:11px}.level b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#f2f3ed;margin-bottom:9px;font-size:13px}.level.active{color:var(--green)}.level.active b{background:var(--green);color:white}.rules{font-size:12px;color:#7c897e;line-height:2}.rules strong{color:var(--green);font-weight:500}.play{background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;position:relative;min-width:0}.stats{display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:20px}.stat{padding-left:22px;border-left:1px solid var(--line)}.stat:first-child{padding-left:0;border:0}.stat small{font-size:11px;color:var(--muted)}.stat strong{display:block;font-size:28px;margin-top:7px;font-weight:600}.stat strong em{font-size:12px;font-style:normal;color:var(--muted);font-weight:400}.boardwrap{position:relative;max-width:490px;margin:auto}.grid{display:grid;gap:10px;grid-template-columns:repeat(4,1fr)}.card{aspect-ratio:1;border:0;background:transparent;padding:0;perspective:800px;min-width:0}.inner{display:block;width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .35s}.card.flipped .inner,.card.matched .inner{transform:rotateY(180deg)}.face{position:absolute;inset:0;display:grid;place-items:center;border-radius:13px;backface-visibility:hidden}.back{background:#e7eddd;border:1px solid #d9e2cd;color:#a4b58e;font-size:27px}.back:after{content:'✦';border:1px solid #becdad;border-radius:50%;width:40%;aspect-ratio:1;display:grid;place-items:center;font-size:1em}.front{background:#fbf6e8;border:1px solid #e9dfc4;transform:rotateY(180deg);font-size:clamp(18px,3.3vw,38px)}.card:hover:not(.matched) .back{background:#dce7cf}.card.matched{opacity:.24;transition:opacity .4s}.card.matched .front{background:#edf4ec;border-color:#a9c3a5}.grid.dense{gap:6px}.dense .face{border-radius:8px}.dense .back{font-size:16px}.dense .front{font-size:24px}.bottom{display:flex;justify-content:space-between;align-items:center;margin-top:20px;font-size:12px;color:var(--muted)}.progress{width:90px;height:5px;background:#edf0e8;border-radius:4px;overflow:hidden}.progress i{display:block;height:100%;background:#7e9c68;width:0;transition:width .3s}.status{display:flex;gap:10px;align-items:center}.actions{display:flex;gap:8px}.actions button{border:0;background:#f2f4ed;color:var(--green);padding:9px 13px;border-radius:8px;font-size:12px}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:16px;background:#faf9f0c9;backdrop-filter:blur(5px);z-index:2;text-align:center;padding:16px}.overlay[hidden]{display:none}.overlay h2{font-size:26px;margin:14px 0 10px}.overlay p{color:#73816e;font-size:13px;max-width:280px;margin:0 auto 20px}.heroicon{font-size:44px}.primary{background:var(--green);border:0;border-radius:12px;color:white;padding:14px 30px;font-size:14px;box-shadow:0 5px 15px #34694e20}.notice{height:22px;text-align:center;font-size:12px;color:var(--green);margin:16px 0 0}.footer{text-align:center;color:#9aa48e;font-size:11px;letter-spacing:2px;margin:28px 0}.danger{color:#c06f54!important}dialog{border:1px solid var(--line);border-radius:22px;color:var(--ink);padding:28px;max-width:440px;width:90%}dialog::backdrop{background:#243d3266}dialog p{font-size:13px;color:#71806f} @media(max-width:760px){header{height:70px;padding:0 20px}main{margin:24px auto;padding:0 16px}.intro{margin-bottom:22px}h1{font-size:28px}.layout{grid-template-columns:1fr;gap:18px}aside{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{padding:16px}.rulesbox{display:none}.modes{display:flex;gap:6px;flex-wrap:wrap}.mode{padding:10px;flex:1}.mode small{display:none}.label{margin-bottom:12px}.level b{width:32px;height:32px}.play{padding:18px}.stat{padding-left:15px}.stat strong{font-size:24px}.grid{gap:8px}.front{font-size:32px}.dense .front{font-size:20px}.best{font-size:10px}.intro p{font-size:12px}.footer{font-size:10px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(min-width:761px){header{height:64px}main{margin:20px auto}.intro{margin-bottom:18px}h1{font-size:28px;margin:6px 0}.play{padding:20px}.stats{padding-bottom:14px;margin-bottom:14px}.boardwrap{max-width:min(460px,calc(100vh - 350px))}.footer{margin:16px 0}.box{padding:18px}.rulesbox p{display:none}.rulesbox>.rules:last-child{display:none}}
+.difficulty{display:block;width:100%;text-align:left;border:1px solid #dce4d6;border-radius:10px;padding:10px;margin-top:8px;background:#fafbf6;color:var(--ink);font-size:13px}.difficulty small{display:block;font-size:10px;color:#768573;margin-top:5px}.difficulty.active{border-color:var(--green);background:#edf4ec}.ai-title{font-size:11px;color:#819087;margin-top:18px}#aiHint{font-size:11px;line-height:1.6;color:#768573;margin-bottom:0}aside{gap:12px}.rulesbox{padding:14px}@media(min-width:761px){.mode{padding:10px}.mode small{font-size:10px}.label{margin-bottom:10px}}
+/* Combo 缩放与光效；重复触发时由 JS 重启动画。 */
+.combo-badge{display:inline-block;padding:8px 14px;border-radius:20px;background:#fff1c6;color:#8b5a0e;font-size:15px;font-weight:800;white-space:nowrap}
+.combo-badge[hidden]{display:none}.combo-badge.pop{animation:comboBloom .6s ease-out}
+@keyframes comboBloom{0%{transform:scale(.8);box-shadow:0 0 0 #e5ba5500}45%{transform:scale(1.2);box-shadow:0 0 25px #e5ba5599}100%{transform:scale(1);box-shadow:0 0 0 #e5ba5500}}
+.toolrow{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:40px;margin-bottom:6px}.powerbuttons{display:flex;gap:8px}.power{font:inherit;font-size:12px;border:1px solid #cddbc6;border-radius:10px;padding:10px 14px;background:#eff5e9;color:var(--green)}.power:disabled{cursor:not-allowed;opacity:.48}.powerhint{font-size:11px;color:var(--muted);margin-bottom:12px;min-height:16px}.notice{min-height:22px;height:auto}.bottom{flex-wrap:wrap;gap:12px}
+@media(min-width:761px){.boardwrap{max-width:min(440px,calc(100vh - 430px))}}
+@media(prefers-reduced-motion:reduce){.combo-badge.pop{animation:none}}
+.card.special .front{border-color:#d6b765;background:#fff7db}.card.bomb.flipped .front{background:#ffe1d6;border-color:#c27659}.grid.explode{animation:blast .45s ease-out}@keyframes blast{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}@media(prefers-reduced-motion:reduce){.grid.explode{animation:none}}
+.specialLegend{font-size:11px;color:#8b795a;margin:0 0 12px;line-height:1.6}@media(min-width:761px){.boardwrap{max-width:min(440px,calc(100vh - 455px))}}
+.difficultybar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:0 0 18px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff}.difficultychoices{display:flex;gap:6px}.difficultychoices button{padding:9px 12px;border:1px solid transparent;border-radius:9px;background:#f4f5ef;color:var(--ink);font-size:12px}.difficultychoices button.active{background:#e8f1e3;border-color:#78996d;color:var(--green)}#gameDifficultyHint{font-size:11px;color:var(--muted)}@media(min-width:761px){.boardwrap{max-width:min(440px,max(280px,calc(100vh - 515px)))}}
+</style>
+</head>
+<body>
+<header>
+<div class="brand">
+<span>✿</span>翻翻花园</div>
+<button class="quiet" id="help">怎么玩 ↗</button>
+</header>
+<main>
+<div class="intro">
+<div>
+<div class="eyebrow">A LITTLE BREAK, A LITTLE CHALLENGE</div>
+<h1>翻开一张，发现一对。</h1>
+<p>让记忆开花，给自己一场小小的挑战。</p>
+</div>
+<div class="best">单人最高纪录<strong id="best">0 <small>分</small>
+</strong>
+</div>
+</div>
+<div class="difficultybar">
+<div class="difficultychoices" role="group" aria-label="游戏难度">
+<button id="game-baby">🍼 宝宝模式</button>
+<button id="game-normal">🌿 普通模式</button>
+<button id="game-hard">🔥 困难模式</button>
+</div>
+<span id="gameDifficultyHint">
+</span>
+</div>
+<div class="layout">
+<aside>
+<section class="box">
+<div class="label">01 / 选择玩法</div>
+<div class="modes">
+<button class="mode active" data-mode="single">
+<b>☀ 单人挑战</b>
+<small>与时间赛跑，挑战连续配对</small>
+</button>
+<button class="mode" data-mode="multi">
+<b>♧ 双人对战</b>
+<small>同屏轮流翻牌，看看谁更厉害</small>
+</button>
+<button class="mode" data-mode="bot">
+<b>🤖 人机对战</b>
+<small>双难度 · 挑战不同记忆方式</small>
+</button>
+</div>
+<div id="aiOptions" hidden>
+<div class="ai-title">选择 AI 难度</div>
+<button class="difficulty" id="forgetful">🌱 健忘型 AI <small>普通 · 队列记忆 / RNN 类比</small>
+</button>
+<button class="difficulty" id="master">🧠 记忆大师 AI <small>困难 · 全图记忆 / 注意力类比</small>
+</button>
+<p id="aiHint">
+</p>
+</div>
+</section>
+<section class="box">
+<div class="label">02 / 花园旅程</div>
+<div class="levels">
+<div class="level active">
+<b>01</b>4 × 4</div>
+<div class="level">
+<b>02</b>6 × 6</div>
+<div class="level">
+<b>03</b>8 × 8</div>
+</div>
+</section>
+<section class="box rulesbox">
+<div class="label">记忆小贴士</div>
+<div class="rules" id="rules">
+</div>
+<p style="font-size:29px;margin:20px 0 0">🌱</p>
+<div class="rules">慢一点观察，快一点发现。<br>每一张翻过的牌，都是线索。</div>
+</section>
+</aside>
+<section class="play">
+<div class="stats">
+<div class="stat">
+<small id="scoreLabel">当前得分</small>
+<strong id="score">0 <em>分</em>
+</strong>
+</div>
+<div class="stat">
+<small id="timeLabel">剩余总时间</small>
+<strong id="time">60 <em>秒</em>
+</strong>
+</div>
+<div class="stat">
+<small id="comboLabel">连续配对</small>
+<strong id="combo">0 <em>COMBO</em>
+</strong>
+</div>
+</div>
+<div class="toolrow">
+<div class="powerbuttons">
+<button id="peek" class="power" title="全场翻开 1 秒，冷却 30 秒">◉ 透视</button>
+<button id="shuffle" class="power" title="打乱未消除的牌，冷却 20 秒">⤨ 洗牌</button>
+</div>
+<span id="comboBadge" class="combo-badge" aria-live="polite" hidden>
+</span>
+</div>
+<div id="powerHint" class="powerhint">自己的回合且未翻牌时可用</div>
+<div class="specialLegend" id="specialLegend">💣 −5 分并结束回合　⏳ 操作 +3 秒　🃏 万能配对</div>
+<div class="boardwrap">
+<div class="grid" id="grid" aria-label="记忆配对棋盘">
+</div>
+<div class="overlay" id="overlay">
+<div>
+<div class="heroicon" id="heroicon">🌱</div>
+<h2 id="overlayTitle">记忆，从这里萌芽</h2>
+<p id="overlayText">16 张卡片，8 对小惊喜。<br>准备好开启你的花园旅程了吗？</p>
+<button class="primary" id="mainAction">开始挑战 →</button>
+</div>
+</div>
+</div>
+<div class="notice" id="notice" aria-live="polite">翻开两张相同的图案，就能收获分数</div>
+<div class="bottom">
+<div class="status">
+<span id="pairs">0 / 8 对</span>
+<div class="progress">
+<i id="progress">
+</i>
+</div>
+</div>
+<div class="actions">
+<button id="pause">暂停</button>
+<button id="restart">重新开始</button>
+</div>
+</div>
+</section>
+</div>
+<div class="footer">FLIP · MATCH · BLOOM &nbsp; / &nbsp; 小小花园，大大记忆力</div>
+</main>
+<dialog id="helpDialog">
+<h2>花园里的游戏规则</h2>
+<p>难度：宝宝模式记忆 10 秒，单人每关 120 秒，三关操作限时 20/16/12 秒，无炸弹；普通模式记忆 5 秒，单人每关 60 秒，操作限时 10/8/6 秒，每关 2 张炸弹；困难模式记忆 3 秒，单人每关 45 秒，操作限时 8/6/4 秒，每关 4 张炸弹。所有难度均有 2 张沙漏、2 张百变牌。AI 记忆类型可单独选择。💣 炸弹在实际点击翻牌时立即爆炸，−5 分、清空连击并结束回合；单人重新开始一次操作，双人/人机换人。炸弹随后移除，不计入清关配对目标，也不额外扣总时间。开局展示和透视不会引爆。</p>
+<p>⏳ 沙漏与沙漏或 Joker 配对，按正常规则得分，并为该玩家的下一次操作增加 3 秒；单人仍享有普通配对的总时间 +3 秒。🃏 Joker 可配任意非炸弹牌；若它配走了普通图案或沙漏，剩余同图案的那张牌会公开变为 Joker，避免留下无法配对的孤牌。清完所有非炸弹牌即可过关。</p>
+<p>连击：玩家连续成功，单次得分依次为 10、12、14、16… 分（每多一次 +2）。第二次起显示 Combo X2、X3…；失败、超时、换人或进入下一关会清空连击。AI 仍按每对 10 分计算。</p>
+<p>道具：仅玩家自己的回合，且尚未翻牌时使用。透视将所有未消除卡片展示 1 秒，冷却 30 秒；透视期间暂停计时和翻牌，AI 不会获得此次透视的额外记忆。洗牌打乱未消除卡片的位置，冷却 20 秒；已配对卡片不动，AI 的旧位置记忆会清空。道具不打断连击。双人各有独立冷却；冷却按游戏进行时间计算，暂停、记忆阶段和关间等待不计时，进入下一关不重置冷却。</p>
+<p>人机对战：你先手，机器人后手，沿用双人计分规则。健忘型 AI 使用容量为 8 的先进先出队列；新的位置入队时，最早记住的位置被遗忘，重新看到队列中已有的位置不会改变其顺序。记忆大师 AI 保留所有展示过的牌，并按图案直接检索配对。两者都观察开局展示，未知位置随机探索。RNN 与 Transformer 仅为记忆方式的教学类比，并未运行神经网络模型。记忆大师的每回合成功配对上限随关卡变化：4×4 为 2 次，6×6 为 3 次，8×8 为 4 次，达到上限自动换你；失败也立即换人。你仍然先手。每次翻牌间隔约 0.8 秒，暂停时机器人也停止。</p>
+<p>单人：每关初始时间由所选难度决定。配对成功 +10 分、+3 秒；从第二次连续成功起，额外加分依次为 +2、+4、+6… 分。失败 −5 分、−3 秒，并清空连击。</p>
+<p>双人：在同一设备上轮流翻牌。成功至少 +10 分，连续配对额外加分，并保留回合；失败 −5 分并换人。分数可以为负，三关累计得分高者获胜。</p>
+<p>三个关卡分别为 4×4、6×6、8×8，每次配对限时由难度和关卡共同决定。超时视为失败。失败的卡片在 1 秒后盖回；结算动画期间暂停计时。单人过关后总时间恢复该难度的初始值，分数累计。</p>
+<p>暂停或切到其他页面时，已翻开的卡片会被遮住。最高分仅保存在本机。每关开始先展示全部卡片，展示时长由难度决定，记忆结束后才开始计时。</p>
+<button class="primary" id="closeHelp">知道了</button>
+</dialog>
+<script>
+'use strict';
+const $=id=>document.getElementById(id),icons=['🍎','🍌','🍇','🍉','🍒','🍓','🍍','🥝','🍋','🍊','🥑','🥕','🌽','🍄','🌸','🌻','🌷','🌵','🍀','🌲','🦋','🐝','🐞','🐢','🐳','🐬','🦊','🐼','🐸','🐰','⭐','🌈'];
+let state, pending=null, last=performance.now(), best=0;
+try{best=Number(localStorage.getItem('garden-best'))||0}catch{}$('best').innerHTML=best+' <small>分</small>';
+// 游戏难度与 AI 的记忆类型独立，可自由组合。
+const GAME_LEVELS={
+    baby:{name:'宝宝模式',preview:10,total:120,turns:[20,16,12],bombs:0},
+    normal:{name:'普通模式',preview:5,total:60,turns:[10,8,6],bombs:2},
+    hard:{name:'困难模式',preview:3,total:45,turns:[8,6,4],bombs:4}
+};
+function gameConfig(){return GAME_LEVELS[state?.gameDifficulty||'normal'];}
+function renderGameDifficulty(){
+    const cfg=gameConfig();
+    for(const key of Object.keys(GAME_LEVELS)){const b=$('game-'+key);b.classList.toggle('active',state.gameDifficulty===key);b.setAttribute('aria-pressed',state.gameDifficulty===key);}
+    $('gameDifficultyHint').textContent=`记忆 ${cfg.preview} 秒 · 本关操作 ${cfg.turns[state.level]} 秒${state.mode==='single'?' · 总时间 '+cfg.total+' 秒':''} · ${cfg.bombs?cfg.bombs+' 张炸弹':'无炸弹'}`;
+    $('specialLegend').textContent=(cfg.bombs?'💣 −5 分并结束回合　':'🍼 本局无炸弹　')+'⏳ 操作 +3 秒　🃏 万能配对';
+}
+function deck(size){const bombs=gameConfig().bombs;const list=[...icons.slice(0,(size*size-bombs-4)/2).flatMap(type=>[type,type]),...Array(bombs).fill('💣'),'⏳','⏳','🃏','🃏'];for(let i=list.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[list[i],list[j]]=[list[j],list[i]]}return Array.from({length:size},(_,r)=>Array.from({length:size},(_,c)=>({id:r*size+c,type:list[r*size+c],isFlipped:false,isMatched:false})));}
+function reset(mode=state?.mode||'single',difficulty=state?.difficulty||'forgetful',gameDifficulty=state?.gameDifficulty||'normal'){clearTimeout(pending);pending=null;state={mode,difficulty,gameDifficulty:GAME_LEVELS[gameDifficulty]?gameDifficulty:'normal',cooldowns:{P1:{peek:0,shuffle:0},P2:{peek:0,shuffle:0}},powerLeft:0,status:'READY',level:0,board:[],flipped:[],scores:{P1:0,P2:0},player:'P1',total:60,turn:10,combo:0,matched:0,locked:false,paused:false};setup();}
+function setup(){state.turnBonus={P1:0,P2:0};state.blast=false;state.powerLeft=0;state.masterMatches=0;state.masterLimit=[2,3,4][state.level];state.botMemory=new Map();state.botQueue=[];state.botWait=0.8;state.size=[4,6,8][state.level];state.limit=gameConfig().turns[state.level];state.turn=state.limit;state.total=gameConfig().total;state.combo=0;state.matched=0;state.flipped=[];state.locked=false;state.board=deck(state.size);state.targetPairs=state.board.flat().filter(c=>c.type!=='💣').length/2;$('notice').textContent='翻开两张相同的图案，就能收获分数';$('grid').style.gridTemplateColumns=`repeat(${state.size},1fr)`;$('grid').classList.toggle('dense',state.size>4);$('grid').innerHTML='';state.board.flat().forEach(c=>{const b=document.createElement('button');b.className='card';b.dataset.id=c.id;b.setAttribute('aria-label',`第 ${Math.floor(c.id/state.size)+1} 行第 ${c.id%state.size+1} 列，未翻开`);b.innerHTML='<span class="inner"><span class="face back"></span><span class="face front"></span></span>';b.onclick=()=>flip(c);$('grid').append(b)});render();show('🌱',state.level?'新花园，新的挑战':'记忆，从这里萌芽',`${state.size*state.size} 张卡片，${state.targetPairs} 对图案，${gameConfig().bombs?gameConfig().bombs+' 张炸弹':'没有炸弹'}。先展示 ${gameConfig().preview} 秒供你记忆，随后每次配对限时 ${state.limit} 秒。`,state.mode==='single'?'开始挑战 →':'开始对战 →');}
+function show(icon,title,txt,button){$('heroicon').textContent=icon;$('overlayTitle').textContent=title;$('overlayText').textContent=txt;$('mainAction').textContent=button;$('overlay').hidden=false;}
+function render(){const s=state;renderGameDifficulty();const single=s.mode==='single';$('grid').classList.toggle('explode',!!s.blast);renderPowers();$('comboBadge').hidden=s.combo<2;$('comboBadge').textContent=`Combo X${s.combo}`;$('aiOptions').hidden=s.mode!=='bot';for(const d of ['forgetful','master']){$(d).classList.toggle('active',s.difficulty===d);$(d).setAttribute('aria-pressed',s.difficulty===d);}$('aiHint').textContent=s.difficulty==='master'?`保留全图记忆；本关每回合最多配对 ${[2,3,4][s.level]} 次，到上限就换你。`:'最多记住 8 个位置，新记忆挤掉最早的旧记忆。';$('scoreLabel').textContent=single?'当前得分':`${playerName("P1")} 得分${s.player==='P1'?' · 当前回合':''}`;$('score').innerHTML=s.scores.P1+' <em>分</em>';$('timeLabel').textContent=single?'剩余总时间':'本次操作剩余';$('time').innerHTML=Math.max(0,Math.ceil(single?s.total:s.turn))+' <em>秒</em>';$('time').classList.toggle('danger',(single?s.total:s.turn)<=5);$('comboLabel').textContent=single?'连续配对':`${playerName("P2")} 得分${s.player==='P2'?' · 当前回合':''}`;$('combo').innerHTML=(single?s.combo:s.scores.P2)+` <em>${single?'COMBO':'分'}</em>`;$('pairs').textContent=`${s.matched} / ${s.targetPairs} 对`;$('progress').style.width=s.matched/(s.targetPairs)*100+'%';document.querySelectorAll('.level').forEach((e,i)=>e.classList.toggle('active',i===s.level));document.querySelectorAll('.mode').forEach(e=>{e.classList.toggle('active',e.dataset.mode===s.mode);e.setAttribute('aria-pressed',e.dataset.mode===s.mode)});$('pause').textContent=s.paused?'继续':'暂停';$('pause').disabled=s.status!=='PLAYING'||s.locked;$('rules').innerHTML=single?'配对成功 <strong>+10 分 / +3 秒</strong><br>连续配对 <strong>额外 +2、+4… 分</strong><br>配对失败 <strong>−5 分 / −3 秒</strong>':'配对成功 <strong>10 / 12 / 14… 分</strong><br>配对失败 <strong>−5 分，交换回合</strong><br>三关累计 <strong>高分获胜</strong>';}
+function paint(c){const b=$('grid').children[c.id];b.classList.toggle('flipped',c.isFlipped);b.classList.toggle('matched',c.isMatched);b.classList.toggle('bomb',c.type==='💣'&&c.isFlipped);b.classList.toggle('special',c.type==='⏳'||c.type==='🃏');b.querySelector('.front').textContent=c.type;b.setAttribute('aria-label',c.isMatched?'已配对':c.isFlipped?c.type:`第 ${Math.floor(c.id/state.size)+1} 行第 ${c.id%state.size+1} 列，未翻开`);b.disabled=c.isMatched;}
+// 道具只允许真人在空闲回合使用；每位玩家有自己的冷却。
+function canUsePower(kind){return ['peek','shuffle'].includes(kind)&&state.status==='PLAYING'&&!state.paused&&!state.locked&&state.powerLeft<=0&&state.flipped.length===0&&(state.mode!=='bot'||state.player==='P1')&&state.cooldowns[state.player][kind]<=0;}
+function renderPowers(){
+    for(const kind of ['peek','shuffle']){
+        const left=state.cooldowns[state.player][kind];
+        $(kind).disabled=!canUsePower(kind);
+        $(kind).textContent=(kind==='peek'?'◉ 透视':'⤨ 洗牌')+(left>0?` · ${Math.ceil(left)}s`:'');
+    }
+    $('powerHint').textContent=state.powerLeft>0?'透视中 · 游戏计时已暂停，记住牌面位置':state.mode==='bot'&&state.player==='P2'?'AI 正在操作，轮到你时可用道具':'未翻牌时可用 · 透视 1 秒 / 冷却 30 秒 · 洗牌冷却 20 秒';
+}
+function tickPowers(dt){for(const player of ['P1','P2'])for(const kind of ['peek','shuffle'])state.cooldowns[player][kind]=Math.max(0,state.cooldowns[player][kind]-dt-1e-9);renderPowers();}
+function usePower(kind){
+    if(!canUsePower(kind))return;
+    state.cooldowns[state.player][kind]=kind==='peek'?30:20;
+    if(kind==='peek'){
+        state.powerLeft=1;state.locked=true;
+        state.board.flat().forEach(c=>{if(!c.isMatched){c.isFlipped=true;paint(c);}});
+        $('notice').textContent='透视 1 秒 · 游戏计时已暂停';
+    }else{
+        const cards=state.board.flat().filter(c=>!c.isMatched);
+        const original=cards.map(c=>c.type),types=original.slice();
+        for(let i=types.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[types[i],types[j]]=[types[j],types[i]];}
+        // 多种图案时避免随机结果恰好完全不变。
+        if(types.every((v,i)=>v===original[i])){const j=types.findIndex(v=>v!==types[0]);if(j>0)[types[0],types[j]]=[types[j],types[0]];}
+        cards.forEach((c,i)=>{c.type=types[i];c.isFlipped=false;paint(c);});
+        state.botMemory.clear();state.botQueue=[];
+        $('notice').textContent='未消除的牌已洗好，AI 的旧位置记忆已清空';
+    }
+    last=performance.now();render();
+}
+function advancePeek(dt){
+    state.powerLeft=Math.max(0,state.powerLeft-dt-1e-9);
+    if(state.powerLeft>0)return;
+    state.board.flat().forEach(c=>{if(!c.isMatched){c.isFlipped=false;paint(c);}});
+    state.locked=false;last=performance.now();render();
+    if((document.hidden||$('helpDialog').open)&&!state.paused)pause();
+}
+function animateCombo(){
+    if(state.combo<2)return;
+    const badge=$('comboBadge');badge.hidden=false;badge.textContent=`Combo X${state.combo}`;
+    badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');
+}
+// Joker 不配炸弹；炸弹是陷阱，不计入必须清除的配对目标。
+function canPair(a,b){return a!=='💣'&&b!=='💣'&&(a===b||a==='🃏'||b==='🃏');}
+function playerName(p){return state.mode==='bot'?(p==='P1'?'你':state.difficulty==='master'?'记忆大师 AI':'健忘型 AI'):p;}
+function remember(c){if(state.mode!=='bot'||c.isMatched)return;const m=state.botMemory;if(state.difficulty==='master'){m.set(c.id,c.type);return;}if(m.has(c.id))return;state.botQueue.push(c.id);m.set(c.id,c.type);while(state.botQueue.length>8){m.delete(state.botQueue.shift());}}
+function seedMemory(){if(state.mode!=='bot')return;const seen=state.board.flat().slice();for(let i=seen.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[seen[i],seen[j]]=[seen[j],seen[i]];}seen.forEach(remember);}
+// Selection only receives public positions and observations; hidden types are never read.
+function chooseBotCard(publicCards,memory,first){const available=publicCards.filter(c=>!c.isMatched&&!c.isFlipped&&memory.get(c.id)!=='💣');if(!available.length)return null;const known=available.filter(c=>memory.has(c.id));if(first){const match=known.find(c=>canPair(memory.get(c.id),first.type));if(match)return match.id;}else{for(const c of known){if(known.some(d=>d.id!==c.id&&canPair(memory.get(d.id),memory.get(c.id))))return c.id;}}const unknown=available.filter(c=>!memory.has(c.id));const pool=unknown.length?unknown:available;return pool[Math.floor(Math.random()*pool.length)].id;}
+function chooseMasterCard(publicCards,memory,first){const available=publicCards.filter(c=>!c.isMatched&&!c.isFlipped&&memory.get(c.id)!=='💣');const byType=new Map();for(const c of available){if(!memory.has(c.id))continue;const type=memory.get(c.id);if(!byType.has(type))byType.set(type,[]);byType.get(type).push(c.id);}if(first){if(first.type==='🃏'&&available.length)return available[0].id;const match=byType.get(first.type)||byType.get('🃏');if(match?.length)return match[0];}else{for(const ids of byType.values())if(ids.length>=2)return ids[0];if(byType.has('🃏')&&available.length>1)return byType.get('🃏')[0];}return chooseBotCard(publicCards,memory,first);}
+function botTick(dt){if(state.mode!=='bot'||state.player!=='P2'||state.status!=='PLAYING'||state.paused||state.locked)return;state.botWait-=dt;if(state.botWait>0)return;state.botWait=0.8;const cards=state.board.flat();for(const c of cards)if(c.isMatched){state.botMemory.delete(c.id);state.botQueue=state.botQueue.filter(id=>id!==c.id);}const publicCards=cards.map(({id,isFlipped,isMatched})=>({id,isFlipped,isMatched}));const first=state.flipped.length?{type:state.flipped[0].type}:null;const id=(state.difficulty==='master'?chooseMasterCard:chooseBotCard)(publicCards,state.botMemory,first);if(id!==null)flip(cards.find(c=>c.id===id),'bot');}
+function beginMemory(){state.status='MEMORIZING';state.memoryLeft=gameConfig().preview;state.board.flat().forEach(c=>{c.isFlipped=true;paint(c)});$('overlay').hidden=true;last=performance.now();$('notice').textContent=`记忆时间 ${gameConfig().preview} 秒 · 记住这些图案的位置`;render();}
+function flip(c,actor='human'){if(state.mode==='bot'&&((state.player==='P2')!==(actor==='bot')))return;if(state.status!=='PLAYING'||state.paused||state.locked||state.powerLeft>0||c.isFlipped||c.isMatched)return;c.isFlipped=true;paint(c);remember(c);state.flipped.push(c);renderPowers();if(c.type==='💣'){resolve(false,false,true);return;}if(state.flipped.length===2)resolve(canPair(state.flipped[0].type,state.flipped[1].type));}
+function resolve(success,timeout=false,bomb=false){const s=state;s.locked=true;s.blast=bomb;const transformed=[];let gain=10;if(bomb){const mine=s.flipped.find(c=>c.type==='💣');if(mine){mine.isMatched=true;paint(mine);}}if(success){if(s.mode!=='bot'||s.player==='P1'){s.combo++;gain+=2*(s.combo-1);animateCombo();}if(s.mode==='single')s.total+=3;if(s.flipped.some(c=>c.type==='⏳'))s.turnBonus[s.player]+=3;s.scores[s.player]+=gain;s.matched++;if(s.mode==='bot'&&s.difficulty==='master'&&s.player==='P2')s.masterMatches++;s.flipped.forEach(c=>{c.isMatched=true;paint(c)});if(s.flipped.some(c=>c.type==='🃏')){const other=s.flipped.find(c=>c.type!=='🃏');if(other){const orphan=s.board.flat().find(c=>!c.isMatched&&c.type===other.type);if(orphan){orphan.type='🃏';orphan.isFlipped=true;paint(orphan);remember(orphan);transformed.push(orphan);}}} $('notice').textContent=`配对成功！+${gain} 分${s.mode==='single'?'，+3 秒':s.mode==='bot'&&s.difficulty==='master'&&s.player==='P2'&&s.masterMatches>=s.masterLimit?'，达到本回合上限，换你啦':'，继续你的回合'}`+(s.flipped.some(c=>c.type==='⏳')?' · 下次操作 +3 秒':'')+(transformed.length?' · 剩余同图案牌变为 Joker':'');}else{s.scores[s.player]-=5;s.combo=0;if(s.mode==='single'&&!bomb)s.total=Math.max(0,s.total-3);$('notice').textContent=bomb?'💥 炸弹爆炸！−5 分，回合结束':(timeout?'操作超时':'再记住这两张')+'：−5 分'+(s.mode==='single'?'，−3 秒':'，即将交换回合');}render();if(s.mode==='single'&&s.total<=0){finish(false);return}pending=setTimeout(()=>{pending=null;s.blast=false;transformed.forEach(c=>{c.isFlipped=false;paint(c)});s.flipped.forEach(c=>{if(!c.isMatched)c.isFlipped=false;paint(c)});s.flipped=[];s.locked=false;if(s.mode!=='single'&&(!success||(s.mode==='bot'&&s.difficulty==='master'&&s.player==='P2'&&s.masterMatches>=s.masterLimit))){s.player=s.player==='P1'?'P2':'P1';s.combo=0;s.masterMatches=0;if(s.player==='P2')s.masterLimit=[2,3,4][s.level];}s.turn=s.limit+s.turnBonus[s.player];s.turnBonus[s.player]=0;s.botWait=0.8;last=performance.now();if(s.matched===s.targetPairs){if(s.level===2)finish(true);else{s.status='ROUND_END';show('🌻','这片花园，全部点亮！',`第 ${s.level+1} 关完成。分数将带入下一关。`,'前往下一关 →');}}render();if((document.hidden||$('helpDialog').open)&&s.status==='PLAYING'&&!s.paused)pause();},success||bomb?450:1000);}
+function finish(won){clearTimeout(pending);state.powerLeft=0;state.status='GAME_OVER';state.locked=false;if(state.mode==='single'){best=Math.max(best,state.scores.P1);try{localStorage.setItem('garden-best',best)}catch{}$('best').innerHTML=best+' <small>分</small>';show(won?'🏆':'🌿',won?'你的记忆花园盛开了！':'休息一下，再来一局',`本局得分 ${state.scores.P1} 分 · 到达第 ${state.level+1} 关`,'再玩一次 →');}else{const {P1,P2}=state.scores;show('🏆',P1===P2?'势均力敌，平局！':`${playerName(P1>P2?'P1':'P2')} 赢得了这场对战！`,`${playerName("P1")}：${P1} 分 · ${playerName("P2")}：${P2} 分`,'再玩一次 →');}render();}
+function pause(){if(state.status!=='PLAYING'||state.locked)return;state.paused=!state.paused;state.botWait=0.8;last=performance.now();if(state.paused)show('☕','花园休息中','记忆也需要喘口气，准备好后继续。','继续游戏 →');else $('overlay').hidden=true;render();}
+$('mainAction').onclick=()=>{if(state.paused){pause();return}if(state.status==='GAME_OVER'){reset();return}if(state.status==='ROUND_END'){state.level++;state.status='READY';setup();beginMemory();return}beginMemory();};$('pause').onclick=pause;$('peek').onclick=()=>usePower('peek');$('shuffle').onclick=()=>usePower('shuffle');
+function confirmReset(mode,difficulty=state.difficulty,gameDifficulty=state.gameDifficulty){if(['PLAYING','MEMORIZING'].includes(state.status)&&!confirm('结束当前游戏并重新开始？本局进度将被清空。'))return;reset(mode,difficulty,gameDifficulty)}$('restart').onclick=()=>confirmReset();document.querySelectorAll('.mode').forEach(e=>e.onclick=()=>{if(e.dataset.mode!==state.mode)confirmReset(e.dataset.mode)});
+for(const d of ['baby','normal','hard']){$('game-'+d).onclick=()=>{if(state.gameDifficulty!==d)confirmReset(state.mode,state.difficulty,d);};}
+for(const d of ['forgetful','master']){$(d).onclick=()=>{if(state.difficulty!==d)confirmReset('bot',d);};}
+$('help').onclick=()=>{if(state.status==='PLAYING'&&!state.paused&&!state.locked)pause();$('helpDialog').showModal()};$('closeHelp').onclick=()=>$('helpDialog').close();document.addEventListener('visibilitychange',()=>{if(document.hidden&&state.status==='PLAYING'&&!state.paused&&!state.locked)pause();});
+setInterval(()=>{const now=performance.now(),dt=(now-last)/1000;last=now;if(state?.status==='PLAYING'&&!state.paused)tickPowers(dt);if(state?.powerLeft>0){advancePeek(dt);return;}if(state?.status==='MEMORIZING'){state.memoryLeft-=dt;$('notice').textContent=`记忆时间 ${Math.max(0,Math.ceil(state.memoryLeft))} 秒 · 记住这些图案的位置`;if(state.memoryLeft<=0){state.board.flat().forEach(c=>{c.isFlipped=false;paint(c)});seedMemory();state.status='PLAYING';state.turn=state.limit;state.botWait=0.8;render();}return;}if(!state||state.status!=='PLAYING'||state.paused||state.locked)return;state.turn-=dt;if(state.mode==='single')state.total-=dt;if(state.mode==='single'&&state.total<=0){state.total=0;finish(false)}else if(state.turn<=0)resolve(false,true);else{render();$('notice').textContent=`${state.mode!=='single'?playerName(state.player)+(state.mode==='bot'&&state.difficulty==='master'&&state.player==='P2'?`（本回合 ${state.masterMatches}/${state.masterLimit} 对）`:'')+' 的回合 · ':''}本次配对剩余 ${Math.ceil(state.turn)} 秒${state.flipped.length?' · 再翻一张试试':' · 找到相同的两张牌'}`;botTick(dt);}},100);
+reset();
+</script></body></html>
